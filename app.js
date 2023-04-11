@@ -1,3 +1,8 @@
+'use strict'
+
+let employeesArray = [];
+let salary = 0;
+
 function Employee(ID, fullName, department, level, imageURL, salary){
     this.ID = ID;
     this.fullName = fullName;
@@ -5,15 +10,10 @@ function Employee(ID, fullName, department, level, imageURL, salary){
     this.level = level;
     this.imageURL = imageURL;
     this.salary = salary;
+    employeesArray.push(this);
 }
 
-// let salary = 0;
-let employeesArray = [];
-createInstances();
-renderSalaries()
-
 ///////////////////////////////
-function createInstances(){
 
     let employee1 = new Employee(1000, "Ghazi Samer", "Administration", "Senior");
     let employee2 = new Employee(1001, "Lana Ali", "Finance", "Senior");
@@ -23,49 +23,48 @@ function createInstances(){
     let employee6 = new Employee(1005, "Rana Saleh", "Development", "Junior");
     let employee7 = new Employee(1006, 	"Hadi Ahmad", "Finance", "Mid-Senior");
 
-    employeesArray.push(employee1, employee2, employee3, employee4, employee5, employee6, employee7);
-    // return employeesArray;
-    // console.log(employee2.fullName);
-}
-
 //////////////////////////////
 
-// let testEmployee = new Employee(233, "hasan", "IT", "senior", "some-url", 1000000);
-// console.log(testEmployee);
-
-function calculateSalary(emp){
-    if(emp.level = "Senior"){
-        emp.salary = (Math.floor(Math.random() * 2000) + 1500) - ((Math.floor(Math.random() * 2000) + 1500) * 7.5) / 100;
+Employee.prototype.calculateSalary = function(){
+    // function calculateSalary(emp){
+    if(this.level === "Senior"){
+        this.salary = (Math.floor(Math.random() * 2000) + 1500) - ((Math.floor(Math.random() * 2000) + 1500) * 7.5) / 100;
     }
-    else if(emp.level = "Mid-Senior"){
-        emp.salary = (Math.floor(Math.random() * 1500) + 1000) - ((Math.floor(Math.random() * 2000) + 1500) * 7.5) / 100;;
+    else if(this.level === "Mid-Senior"){
+        this.salary = (Math.floor(Math.random() * 1500) + 1000) - ((Math.floor(Math.random() * 2000) + 1500) * 7.5) / 100;;
     }
-    else if(emp.level = "Junior"){
-        emp.salary = (Math.floor(Math.random() * 1000) + 500) - ((Math.floor(Math.random() * 2000) + 1500) * 7.5) / 100;
+    else if(this.level === "Junior"){
+        this.salary = (Math.floor(Math.random() * 1000) + 500) - ((Math.floor(Math.random() * 2000) + 1500) * 7.5) / 100;
     }
-    return emp.salary;      //*****************************
+    return this.salary;
 }
 /////////////////////////////
 
-function renderSalaries(){
-    for(let i = 0; i < employeesArray.length; i++){
-        let newEmpNames = document.createElement('p');
-        let newEmpSalaries = document.createElement('p');
+//  function renderSalaries(){
+//     for(let i = 0; i < employeesArray.length; i++){
+//         let newEmpNames = document.createElement('p');
+//         let newEmpSalaries = document.createElement('p');
+//         let breakLine = document.createElement('hr');
         
-        //calculateSalary(employeesArray[i]);
 
-        newEmpNames.textContent = employeesArray[i].fullName;
-        newEmpSalaries.textContent = calculateSalary(employeesArray[i]);
-        document.querySelector('#employees-salaries').appendChild(newEmpNames);
-        document.querySelector('#employees-salaries').appendChild(newEmpSalaries);
-    }
+//         newEmpNames.textContent = employeesArray[i].fullName;
+//         newEmpSalaries.textContent = calculateSalary(employeesArray[i]);
+
+//         document.querySelector('#employees-salaries').appendChild(newEmpNames);
+//         document.querySelector('#employees-salaries').appendChild(newEmpSalaries);
+//         document.querySelector('#employees-salaries').appendChild(breakLine);
+        
+
+//     }
+// }
+
+Employee.prototype.renderSalaries = function(){ 
+    document.write(`Name: ${this.fullName} Salary: ${this.salary}`)
 }
 
-
-
-//////////////////////////////
-// random tests
-// console.log(Math.floor(Math.random() * 2000) + 1500);
-// console.log((1000) - (1000 * 10) /100);
-// console.log(employeesArray)
-// console.log((Math.floor(Math.random() * 1000) + 500) - ((Math.floor(Math.random() * 2000) + 1500) * 7.5) / 100);
+for(let i = 0; i < employeesArray.length; i++){
+    employeesArray[i].calculateSalary();
+    employeesArray[i].renderSalaries();
+    document.write('<hr>');
+    document.write('<br>');
+}
