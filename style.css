@@ -1,12 +1,24 @@
+/* colors:
+rgb(11, 36, 71) - bg(darker)
+rgb(25, 55, 109) - bg(lighter)
+rgb(87, 108, 188) - extra
+rgb(165, 215, 232) - for font 
+*/
+
+body{
+background-color: rgb(11, 36, 71);
+color: rgb(165, 215, 232);
+}
 header{
-    background-color: rgb(55, 55, 55);
-    color: white;
+    background-color: rgb(25, 55, 109);
+    color: rgb(165, 215, 232);
     padding: 15px;
     position: fixed;
     width: 100%;
     top: 0;
 }
 nav ul{
+    background-color: rgb(25, 55, 109);
     display: flex;
     list-style: none;
     align-items: center;
@@ -16,13 +28,15 @@ nav ul{
 }
 
 nav ul li a{
-    color: white;
+    background-color: rgb(25, 55, 109);
+    color: rgb(165, 215, 232);
     text-decoration: none;
+    font-size: 40px;
 }
 
 footer{
-    background-color: rgb(55, 55, 55);
-    color: white;
+    background-color: rgb(25, 55, 109);
+    color: rgb(165, 215, 232);
     padding: 15px;
     position: fixed;
     bottom: 0;
@@ -32,4 +46,69 @@ footer{
 
 main{
     margin: 70px;
+    align-content: space-between;
 }
+
+
+
+/* to style the form section:     */
+#profile-pic-container{
+    border: 1px solid black;
+    text-align: center;
+}
+#submit-button-container{
+    text-align: center;
+}  
+#submit:hover {
+    background-color: rgb(25, 55, 109);
+}
+label{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#user-info{
+  padding: 22px;
+  margin: 22px;
+  border: 5px solid rgb(165, 215, 232);
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#name-label, #image-url-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+#name, #image-url {
+    width: 100%;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 8px;
+    
+} 
+select {
+    margin-bottom: 8px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: rgb(25, 55, 109);
+}
+#submit {
+    padding: 12px 22px;
+    background-color: rgb(87, 108, 188);
+    color: rgb(165, 215, 232);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+  
+  
+
+
+/* for styling cards:   will be added inside app.js     */
+/* #new-cards{
+    border: solid;
+    display: flex;
+} */
