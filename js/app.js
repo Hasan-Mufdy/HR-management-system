@@ -16,7 +16,7 @@ function Employee(ID, fullName, department, level, imageURL, salary){
 
 ///////////////////////////////
 
-
+loadSection();
 
 ///////////////////////////////
 
@@ -63,6 +63,7 @@ for(let i = 0; i < employeesArray.length; i++){
 let form = document.getElementById('form');
 let submitBtn = document.getElementById('submit');
 form.addEventListener('submit', formHandler);
+form.addEventListener('submit', saveToLocalStorage);
 let cardSection = document.getElementById('new-cards');
 
 function formHandler(event){
@@ -109,12 +110,11 @@ function formHandler(event){
     let newLevel = document.createElement('p');
     newLevel.textContent = userLevel;
     addedSection.appendChild(newLevel);
-
+    
     userID++;
     let newUserId = document.createElement('p');
     newUserId.textContent = `ID: ${userID}`;
     addedSection.appendChild(newUserId);
-
 
     // console.log(userName, userDepartment, userLevel, userImage);
     
@@ -135,18 +135,9 @@ function formHandler(event){
     addedSection.style.marginLeft = "auto";
     addedSection.style.marginRight = "auto";
 
-
     // profile picture styling:
     profilePicture.style.width = "100px"
     profilePicture.style.borderRadius = "50%";
-
-    // padding: 22px;
-    // margin: 22px;
-    // border: 5px solid rgb(165, 215, 232);
-    // border-radius: 5px;
-    // margin-left: auto;
-    // margin-right: auto;
-  
 
     // 
     // these elements were created in cardSection:
@@ -155,6 +146,19 @@ function formHandler(event){
     // newdepartment
     // newLevel
 
+    // to save users info in the local storage:
+    // saveToLocalStorage();
+    
+}
 
+function saveToLocalStorage(){
+    let sectionToSave = cardSection.innerHTML;
+    localStorage.setItem('section', sectionToSave);
+    loadSection();
+}
 
+function loadSection(){
+    let savedSection = localStorage.getItem('section');
+    let loadedSection = document.getElementById('new-cards');
+    loadedSection.innerHTML = savedSection;
 }
