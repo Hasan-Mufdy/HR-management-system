@@ -1,6 +1,6 @@
 'use strict'
 
-localStorage.clear();
+// localStorage.clear();
 let employeesArray = [];
 let salary = 0;
 let userID = 0;
@@ -48,7 +48,7 @@ Employee.prototype.calculateSalary = function(){
 /////////////////////////////
 
 Employee.prototype.renderSalaries = function(){ 
-    document.write(`Name: ${this.fullName} Salary: ${this.salary}`)
+    document.write(`Name: ${this.fullName} Salary: ${this.salary}`);
 }
 
 for(let i = 0; i < employeesArray.length; i++){
@@ -125,6 +125,23 @@ function formHandler(event){
     let newUserId = document.createElement('p');
     newUserId.textContent = `ID: ${Employee.ID}`;
     addedSection.appendChild(newUserId);
+
+    // user salary
+    if(userLevel === "Senior"){
+        salary = (Math.floor(Math.random() * 2000) + 1500) - ((Math.floor(Math.random() * 2000) + 1500) * 7.5) / 100;
+    }
+    else if(userLevel === "Mid-Senior"){
+        salary = (Math.floor(Math.random() * 1500) + 1000) - ((Math.floor(Math.random() * 2000) + 1500) * 7.5) / 100;;
+    }
+    else if(userLevel === "Junior"){
+        salary = (Math.floor(Math.random() * 1000) + 500) - ((Math.floor(Math.random() * 2000) + 1500) * 7.5) / 100;
+    }
+
+    let newUserSalary = document.createElement('p');
+    // newUserSalary.textContent = `Salary: ${salary}`;
+    newUserSalary.textContent = salary;
+    addedSection.appendChild(newUserSalary);
+
 
     // console.log(userName, userDepartment, userLevel, userImage);
     
