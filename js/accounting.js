@@ -5,13 +5,11 @@ let htmlCode = localStorage.getItem('section');
 createTable();
 
 
-
 function createTable(){
     let table = document.createElement('table');
 
-    // 1. department
     let heading = document.createElement('tr');
-
+    // 1. department
     let departmentHeading = document.createElement('th');
     departmentHeading.textContent = "Department  ";
     heading.appendChild(departmentHeading);
@@ -43,3 +41,32 @@ function createTable(){
     totalSalaryHeading.style.padding = "20px";
 
 }
+
+
+const cardSections = localStorage.getItem('section');
+const sectionValues = [];
+
+console.log(cardSections);
+
+
+filterData();
+    function filterData(){
+    const element = document.createElement('div');
+    element.innerHTML = cardSections;
+    const sections = Array.from(element.querySelectorAll('section')).map(section => {
+    const nameElement = section.querySelector('h2');
+    const departmentElement = section.querySelectorAll('p')[0];
+    const positionElement = section.querySelectorAll('p')[1];
+    const idElement = section.querySelectorAll('p')[2];
+    
+    return {
+    name: nameElement.textContent,
+    department: departmentElement.textContent,
+    position: positionElement.textContent,
+    id: idElement.textContent.slice(4),
+  };
+  
+});
+console.log(sections);
+}
+  

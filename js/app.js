@@ -1,9 +1,11 @@
 'use strict'
 
+localStorage.clear();
 let employeesArray = [];
 let salary = 0;
 let userID = 0;
 
+// class Employee{
 function Employee(ID, fullName, department, level, imageURL, salary){
     this.ID = ID;
     this.fullName = fullName;
@@ -13,7 +15,7 @@ function Employee(ID, fullName, department, level, imageURL, salary){
     this.salary = salary;
     employeesArray.push(this);
 }
-
+// }
 ///////////////////////////////
 
 loadSection();
@@ -56,6 +58,11 @@ for(let i = 0; i < employeesArray.length; i++){
     document.write('<br>');
 }
 
+function generateID(){    
+    Employee.ID = (Math.floor(Math.random() * 10000000)).toString().slice(0, 4);
+    return Employee.ID;
+}
+
 
 //// form handling: ///////////////////////////////////////////////////////////
 
@@ -63,6 +70,7 @@ for(let i = 0; i < employeesArray.length; i++){
 let form = document.getElementById('form');
 let submitBtn = document.getElementById('submit');
 form.addEventListener('submit', formHandler);
+// form.addEventListener('submit', generateID);
 form.addEventListener('submit', saveToLocalStorage);
 let cardSection = document.getElementById('new-cards');
 
@@ -80,6 +88,7 @@ function formHandler(event){
 
     //to create another section inside the card section: /////////////////////////////
     let addedSection = document.createElement('section');
+    addedSection.setAttribute("id", "addedSection")
     cardSection.appendChild(addedSection);
     //////////////////////////////////////////////////////////////////////////////////
 
@@ -111,9 +120,10 @@ function formHandler(event){
     newLevel.textContent = userLevel;
     addedSection.appendChild(newLevel);
     
-    userID++;
+    // user ID
+    generateID();
     let newUserId = document.createElement('p');
-    newUserId.textContent = `ID: ${userID}`;
+    newUserId.textContent = `ID: ${Employee.ID}`;
     addedSection.appendChild(newUserId);
 
     // console.log(userName, userDepartment, userLevel, userImage);
@@ -155,6 +165,7 @@ function saveToLocalStorage(){
     let sectionToSave = cardSection.innerHTML;
     localStorage.setItem('section', sectionToSave);
     loadSection();
+     
 }
 
 function loadSection(){
