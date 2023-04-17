@@ -5,17 +5,17 @@ let employeesArray = [];
 let salary = 0;
 let userID = 0;
 
-// class Employee{
-function Employee(ID, fullName, department, level, imageURL, salary){
-    this.ID = ID;
-    this.fullName = fullName;
-    this.department = department;
-    this.level = level;
-    this.imageURL = imageURL;
-    this.salary = salary;
-    employeesArray.push(this);
+class Employee{
+    constructor(ID, fullName, department, level, imageURL, salary){
+        this.ID = ID;
+        this.fullName = fullName;
+        this.department = department;
+        this.level = level;
+        this.imageURL = imageURL;
+        this.salary = salary;
+        employeesArray.push(this);
 }
-// }
+}
 ///////////////////////////////
 
 loadSection();
