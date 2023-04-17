@@ -27,11 +27,6 @@ let totalAvg = 0;
 let totalSalary = 0;
 
 
-
-// createTable();
-
-
-
 function createTable(){
     let table = document.createElement('table');
     // first row////////////////////////////////////////////////////////
@@ -76,7 +71,7 @@ function createTable(){
 
     // 4. Total Salary
     let totalSalaryAdmin = document.createElement('th');
-    totalSalaryAdmin.textContent = adminTotalSal;
+    totalSalaryAdmin.textContent = parseInt(adminTotalSal);
     heading2.appendChild(totalSalaryAdmin);
 
 
@@ -101,7 +96,7 @@ function createTable(){
 
     // 4. Total Salary
     let totalSalaryMark = document.createElement('th');
-    totalSalaryMark.textContent = markTotalSal;
+    totalSalaryMark.textContent = parseInt(markTotalSal);
     heading3.appendChild(totalSalaryMark);
 
     table.appendChild(heading3);
@@ -126,7 +121,7 @@ function createTable(){
 
     // 4. Total Salary
     let totalSalaryDev = document.createElement('th');
-    totalSalaryDev.textContent = devTotalSal;
+    totalSalaryDev.textContent = parseInt(devTotalSal);
     heading4.appendChild(totalSalaryDev);
 
     table.appendChild(heading4);
@@ -149,7 +144,7 @@ function createTable(){
 
     // 4. Total Salary
     let totalSalaryFin = document.createElement('th');
-    totalSalaryFin.textContent = finTotalSal;
+    totalSalaryFin.textContent = parseInt(finTotalSal);
     heading5.appendChild(totalSalaryFin);
 
     table.appendChild(heading5);
@@ -244,22 +239,27 @@ function setTotalValues(){
   for(let i = 0; i < sections.length; i++){
     if(sections[i].department == "Administration"){
       AdminNumber++;
+      adminTotalSal += sections[i].salary;
+      adminAvgSalary = parseInt(adminTotalSal) / AdminNumber;
     }
     else if(sections[i].department == "Marketing"){
       markNumber++;
+      markTotalSal += sections[i].salary;
+      markAvgSalary = parseInt(markTotalSal) / markNumber;
     }
     else if(sections[i].department == "Development"){
       devNumber++;
+      devTotalSal += sections[i].salary;
+      devAvgSalary = parseInt(devTotalSal) / devNumber;
     }
     else if(sections[i].department == "Finance"){
       finNumber++;
+      finTotalSal += sections[i].salary;
+      finAvgSalary = parseInt(finTotalSal) / finNumber;
     }
   }
   for(let k = 0; k < sections.length; k++){
     totalSalary+= parseInt(sections[k].salary);
-  }
-  for(let i = 0; i < sections.length; i++){
-  
   }
   
   // console.log(devNumber);
@@ -267,7 +267,11 @@ function setTotalValues(){
 }
 
 totalEmployeesNum = AdminNumber + markNumber + devNumber + finNumber;
+totalAvg = totalSalary / totalEmployeesNum;
 
 
 
 createTable();
+
+
+
